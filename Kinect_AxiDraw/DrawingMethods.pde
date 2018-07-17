@@ -52,7 +52,7 @@ boolean isParkedQ() {
 // kinect functions
 // -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-PVector getKinectObjectPostion() {
+PVector getKinectObjectPosition() {
   //get lerped position from global tracker object. methods defined in KinectTracker class
   PVector lerp = tracker.getLerpedPos();
   

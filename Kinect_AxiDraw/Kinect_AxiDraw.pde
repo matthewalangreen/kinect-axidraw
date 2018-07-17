@@ -40,6 +40,8 @@ boolean firstPoint = true;
 boolean debug = false;
 boolean kinectDrawing = false;
 PVector kinectImageOffset = new PVector(80,71);
+PVector kinectObjectPosition;
+ArrayList<PVector> kinectObjectPositions = new ArrayList<PVector>(); // keep track of tracker locations
 // -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
@@ -201,6 +203,7 @@ void setup()
   
   kinect = new Kinect(this);
   tracker = new KinectTracker();
+  kinectObjectPosition = getKinectObjectPosition();
 
 
   Ani.init(this); // Initialize animation library
@@ -596,6 +599,19 @@ void draw() {
     
     // Show the kinect image
     tracker.display();
+    
+    //  Only catpure if brush(pen) is down
+    if(BrushDown) {
+      kinectObjectPositions.add(new PVector(kinectObjectPosition.x, kinectObjectPosition.y));
+    }
+    // draw captured points. 
+      for(int i = 1; i<kinectObjectPositions.size()-1; i++) {
+      PVector pointOne = kinectObjectPositions.get(i);
+      //PVector pointTwo = kinectObjectPositions.get(i+1);
+      fill(0,0,200);
+      ellipse(pointOne.x, pointOne.y, 5, 5);
+      //line(pointOne.x, pointOne.y, pointTwo.x,pointTwo.y);
+      }
 
     // Draw buttons image
     image(imgButtons, 0, 0);
@@ -669,10 +685,9 @@ void draw() {
   }
      
   if(kinectDrawing) {
-    
-    PVector t =  getKinectObjectPostion();
+    kinectObjectPosition = getKinectObjectPosition();
     //safeMove(mouseX, mouseY);
-    safeMove(int(t.x), int(t.y));
+    safeMove(int(kinectObjectPosition.x), int(kinectObjectPosition.y));
   }
   
 }

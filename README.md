@@ -1,7 +1,7 @@
 # kinect-axidraw
 Draw with your body. Use Kinect motion sensor to directly control AxiDraw plotter.  
 ![Magic](Examples/HandDraw.gif)
-<img src=https://github.com/matthewalangreen/kinect-axidraw/blob/master/Examples/HandDraw.gif?raw=true" alt="Magic">
+
 
 
 This is built upon the AxiGen Processing sketch https://github.com/evil-mad/AxiDraw-Processing from Evil Mad Scientist Labs and  https://github.com/shiffman/OpenKinect-for-Processing by Daniel Shiffman.  See also:  http://shiffman.net/p5/kinect/
